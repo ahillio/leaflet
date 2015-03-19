@@ -1,0 +1,26 @@
+From cc0d4de432ba751cc696d2743875d9e75ac42616 Mon Sep 17 00:00:00 2001
+From: interdruper <interdruper@2437374.no-reply.drupal.org>
+Date: Fri, 10 Jan 2014 11:30:15 +0100
+Subject: [PATCH] get rid of any html tag in tooltips
+
+---
+ leaflet.drupal.js | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/leaflet.drupal.js b/leaflet.drupal.js
+index c9dc366..048a5f2 100644
+--- a/leaflet.drupal.js
++++ b/leaflet.drupal.js
+@@ -256,7 +256,8 @@
+       }
+ 
+       if (marker.label) {
+-        lMarker.options.title = marker.label;
++        // get rid of any html tag
++        lMarker.options.title = marker.label.replace(/(<([^>]+)>)/ig,"");
+       }
+ 
+       return lMarker;
+-- 
+1.8.0.msysgit.0
+
